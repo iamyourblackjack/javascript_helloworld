@@ -1,19 +1,41 @@
-# javascript_helloworld
+# VSCode - ESLint, Prettier & Airbnb Setup
 
-Demonstrate how to setup eslint &amp; prettier for Javascript using VSCode.
+### 1. Install ESLint & Prettier extensions for VSCode
 
-Here are the steps to follow in order to set up ESLint and prettier for your Javascript project.
+Optional - Set format on save and any global prettier options
 
-1. Open the terminal in your project root folder and install eslint as a dev dependency. We also need to enable the eslint and prettier extension for the VSCode. So visit the extensions section of VSCode (ctrl + shift + x) and search for Eslint and Prettier — Code formatter and install it.
+### 2. Install Packages
 
-> npm install eslint --save-dev
+```
+npm i -D eslint prettier eslint-plugin-prettier eslint-config-prettier eslint-plugin-node eslint-config-node
+```
 
-2. After that we will generate our .eslintrc.json file through the terminal so run this command to generate your eslint configuration file.
+```
+npx install-peerdeps --dev eslint-config-airbnb
+```
 
-> npx eslint --init
+### 3. Create .prettierrc for any prettier rules (semicolons, quotes, etc)
 
-3. Run the below command to install the required plugins for the prettier setup.
+### 4. Create .eslintrc.json file (You can generate with eslint --init if you install eslint globally)
 
-> npm install eslint-config-prettier eslint-plugin-prettier prettier --save-dev
+```
+{
+  "extends": ["airbnb", "prettier", "plugin:node/recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "func-names": "off",
+    "no-process-exit": "off",
+    "object-shorthand": "off",
+    "class-methods-use-this": "off"
+  }
+}
+```
 
-4. After installing all the above modules it’s time to add some prettier configuration to our .eslintrc.json file. So add this line "plugin:prettier/recommended" inside extends.
+### Reference
+
+-   ESLint Rules - https://eslint.org/docs/rules/
+-   Prettier Options - https://prettier.io/docs/en/options.html
+-   Airbnb Style Guide - https://github.com/airbnb/javascript
